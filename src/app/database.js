@@ -10,7 +10,7 @@ const pool = mysql.createPool({
     database: process.env.DATABASE
 }).promise()
 
-const getAllExpenses = async () => {
+const getExpenses = async () => {
     const [rows] = await pool.query('SELECT * FROM expenses')
     return rows;
 }
@@ -31,4 +31,12 @@ const createExpense = async (name, amount) => {
     const id = result.insertId
     return getExpense(id)
 
+}
+
+const deleteExpense = async (id) => {
+    const [result] = await pool.query(
+        `DELETE FROM expenses
+        WHERE id = ?`, [id]
+    )
+    return `Expense ID: ${id} deleted`
 }
