@@ -5,5 +5,5 @@ export default async function handler(req, res) {
     const { id } = query;
 
     const expense = await getExpense(id)
-    res.send(expense)
+    res.status(200).json(expense)
   }
