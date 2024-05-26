@@ -15,5 +15,20 @@ const getAllExpenses = async () => {
     return rows;
 }
 
-const expenses = await getAllExpenses()
-console.log(expenses)
+const getExpense = async (id) => {
+    const [rows] = await pool.query(
+        `SELECT * 
+        FROM expenses
+        WHERE id = ?`, [id])
+        return rows[0]
+}
+
+const createExpense = async (name, amount) => {
+    const [result] = await pool.query(
+        `INSERT INTO expenses (name, amount)
+        VALUES (?, ?)`, [name, amount]
+    )
+    const id = result.insertId
+    return getExpense(id)
+
+}
