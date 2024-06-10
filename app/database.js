@@ -10,22 +10,22 @@ const pool = mysql.createPool({
     database: process.env.DATABASE
 }).promise()
 
-export const getExpenses = async () => {
-    const [rows] = await pool.query('SELECT * FROM expenses')
+export const getDebits = async () => {
+    const [rows] = await pool.query('SELECT * FROM Debit')
     return rows;
 }
 
-export const getExpense = async (id) => {
+export const getDebit = async (id) => {
     const [rows] = await pool.query(
         `SELECT * 
-        FROM expenses
+        FROM Debit
         WHERE id = ?`, [id])
         return rows[0]
 }
 
-export const createExpense = async (name, amount) => {
+export const createDebit = async (name, amount) => {
     const [result] = await pool.query(
-        `INSERT INTO expenses (name, amount)
+        `INSERT INTO Debit (name, amount)
         VALUES (?, ?)`, [name, amount]
     )
     const id = result.insertId
@@ -33,10 +33,10 @@ export const createExpense = async (name, amount) => {
 
 }
 
-export const deleteExpense = async (id) => {
+export const deleteDebit = async (id) => {
     const [result] = await pool.query(
-        `DELETE FROM expenses
+        `DELETE FROM Debit
         WHERE id = ?`, [id]
     )
-    return `Expense ID: ${id} deleted`
+    return `Debit ID: ${id} deleted`
 }
