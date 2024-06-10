@@ -1,4 +1,4 @@
-import { getExpense } from '../../../src/app/database.js' 
+import { getExpense } from '../../../app/database.js' 
 
 export default async function handler(req, res) {
     const { query } = req
