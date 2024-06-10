@@ -1,4 +1,4 @@
-import { getDebit } from '../../../app/database.js' 
+import { getDebit } from '../../../app/api.js' 
 
 export default async function handler(req, res) {
     const { query } = req
