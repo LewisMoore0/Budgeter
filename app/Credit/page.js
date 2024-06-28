@@ -1,9 +1,9 @@
-export async function getServerSideProps() {
+export async function getData() {
     // Fetch data from external API
     const res = await fetch('http://localhost:3000/api/Credit')
-    const Credits = await res.json()
+    const data = await res.json()
     // Pass data to the page via props
-    return { props: { Credits } }
+    return data
   }
   
   const SumCredits = (expenses) => {
@@ -12,14 +12,14 @@ export async function getServerSideProps() {
     return sum
   }
    
-  export default function Page({ Credits }) {
-  
+  export default async function Page() {
+  const data = await getData()
     return (
       <main>
-        {Credits.map((Credit) => {
+        {data.map((Credit) => {
           return <li>{`${Credit.name}, ${Credit.amount}`}</li>
         })}
   
-        <p> Total Credits: {SumCredits(Credits)}</p>
+        <p> Total Credits: {SumCredits(data)}</p>
       </main>
     )}

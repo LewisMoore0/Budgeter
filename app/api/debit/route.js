@@ -1,4 +1,4 @@
-import { getDebits } from '../../../app/api.js' 
+import { getDebits } from '../../api.js' 
 
 export default async function handler(req, res) {
   const expenses = await getDebits()
