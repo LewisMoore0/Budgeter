@@ -1,3 +1,9 @@
+import {NextUIProvider} from "@nextui-org/react";
+
 export default function Page() {
-    return <p> Home Page </p>
+    return (
+      <NextUIProvider>
+          <p> Home Page </p>
+      </NextUIProvider>
+    )
   }
