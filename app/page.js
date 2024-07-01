@@ -1,9 +1,10 @@
-import {NextUIProvider} from "@nextui-org/react";
+import {Button} from "@nextui-org/button";
 
 export default function Page() {
     return (
-      <NextUIProvider>
-          <p> Home Page </p>
-      </NextUIProvider>
+      <>
+        <p> Home Page </p>
+        <Button>Press me</Button>
+      </>
     )
   }
